@@ -28,7 +28,7 @@ const submitHandler=async()=>{
     password:password.password
 })
    
-    const data= await axios.post("https://w2nlc854i0.execute-api.us-east-1.amazonaws.com/users/users",{
+    const data= await axios.post("http://localhost:5001/register",{
         userId:id,
         name:name.name,
         email:email.email,

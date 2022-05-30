@@ -15,7 +15,7 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
     <Topbar toggleSidebar={toggleSidebar} />
     <Routes>
       <Route path="/" exact element={<VideoPlayer/>} />
-      <Route path="/:id" exact element={<Chat id="1"/>} />
+      <Route path="/:id" exact element={<Chat id="1" username="hafida"/>} />
       <Route exact path="/about" component={() => "About"} />
       <Route exact path="/Pages" component={() => "Pages"} />
       <Route exact path="/faq" component={() => "FAQ"} />

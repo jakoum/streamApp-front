@@ -18,9 +18,10 @@ export const broadcast=(list)=>{
 }
 export const sendMessage =(data)=> {
 
-        if (!socket) {
-          return;
-        }else{
+        if (!socket || !data.username) {
+          console.log("signin to comment")
+        }
+        else{
        
         socket.emit("MESSAGE_SEND",data);
         console.log('message send')

@@ -16,20 +16,17 @@ const SignIn=()=>{
         headers :{
     "Content-type":"application/json"
 }}
-const [id,setId]=useState("")
+const [data,setData]=useState({IngestServerUrl:"",streamKey:""})
 const [email,setEmail]=useState("")
 const [password,setPassword]=useState("")
 const [user,setUser]=useState("")
 const navigate =useNavigate();
 const stream=async(username)=>{
-  const data=await axios.get("http://localhost:5000",{username:username})
-  const h1=document.createElement('h1')
-  const h=document.createElement('h1')
-  h1.value=data.data.IngestServerUrl
-  h.value=data.data.streamKey
-  const div=document.getElementById("div")
-  div.appendChild(h1)
-  div.appendChild(h1)
+  console.log(user)
+  const data=await axios.post("http://localhost:5000",{username:username})
+  setData({streamKey:data.data.streamKey,IngestServerUrl:data.data.IngestServerUrl})
+  console.log(data.data)
+
 
  }
  const submitHandler=async()=>{
@@ -72,9 +69,14 @@ console.log("ok")
     <Button onClick={submitHandler}>Submit</Button>
   </Form>):(
     <>
-    <Button onClick={()=>stream(user)}>Stream</Button>
-    <div id="div"></div>
-    <VideoPlayer /></>
+    <div id="div">
+    <Button onClick={()=>stream(user)}>Stream</Button><br></br>
+    
+      <h5>{data.streamKey}</h5>
+      
+      <h5>{data.IngestServerUrl}</h5>
+    </div>
+    <VideoPlayer username={user}/></>
   )}
    
 </div>)

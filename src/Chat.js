@@ -16,12 +16,14 @@ function Chat(props){
   video.className='vid'
   mes.appendChild(video)
   socket.on("NEW_MESSAGE", (data) => {
+    console.log(data)
     if(data.idStream==props.id){
     const li = document.createElement('li');
     
   li.className = 'message';
+  //li.innerHTML=data.message
    console.log(data)
-   li.appendChild(document.createTextNode(data.message));
+  li.appendChild(document.createTextNode(data.message));
   list.appendChild(li)}
   });
   
@@ -33,7 +35,7 @@ function Chat(props){
      
    
     const [input,setInput]=useState("");
- const [data,setData]=useState({idStream:props.id,message:input,username:""});
+ const [data,setData]=useState();
         
 return(
 <section class="livechat">
@@ -44,7 +46,8 @@ return(
 </div>
 
 <form action='#' >
-  <input type="text" id="chat-input" placeholder="Type away!" onChange={e=>setInput({input:e.target.value})}/>
+  <input type="text" id="chat-input" placeholder="Type away!" onChange={e=>{setData({idStream:props.id,message:e.target.value,username:props.username})
+  }}/>
  
  
  <button type="submit" className='c' value="chat" onClick={()=>{sendMessage(data)}} >button</button>

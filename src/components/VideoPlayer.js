@@ -75,8 +75,8 @@ const VideoPlayer =(props) => {
     <div className="player-wrapper">
          {(data.url!="")?(
        <>
-        {/* <Stream url={data.url}/> */}
-        <Stream />
+        <Stream url={data.url}/>
+        {/* <Stream /> */}
         <Chat id={data.id} username={props.username}/></>
 ):(
   <div id="div" className="aspect-169 pos-relative full-width full-height">
