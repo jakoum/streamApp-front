@@ -47,7 +47,7 @@ console.log("ok")
    {(!user)?( <Form className="form">
        <h2>Sign In</h2>
       <FormGroup>
-        <Label for="exampleEmail">Username</Label>
+        <Label for="exampleEmail">email</Label>
         <Input
           type="email"
           name="email"
